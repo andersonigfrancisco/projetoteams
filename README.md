@@ -1,0 +1,4 @@
+# projetoteams
+
+
+expo start --tunnel
