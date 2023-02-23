@@ -1,5 +1,6 @@
 import {StatusBar} from 'react-native'
-import {Home} from './src/screens/Home'
+
+import{Groups} from './src/screens/Groups'
 
 export default function App() {
 
@@ -10,7 +11,7 @@ export default function App() {
       backgroundColor="transparent" 
       translucent
     />
-     <Home />
+     <Groups />
     </>
    
   )
