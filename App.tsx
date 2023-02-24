@@ -1,4 +1,6 @@
-import { StatusBar, ActivityIndicator } from 'react-native';
+import { StatusBar} from 'react-native';
+import { ThemeProvider } from 'styled-components/native';
+import theme from '@theme/index'
 
 import {
   useFonts,
@@ -6,11 +8,10 @@ import {
   Roboto_700Bold
 } from '@expo-google-fonts/roboto';
 
-import { ThemeProvider } from 'styled-components/native';
-
-import theme from '@theme/index'
 
 
+
+import {Loading} from '@components/Loading'
 import { Groups } from '@screens/Groups'
 
 export default function App() {
@@ -28,7 +29,7 @@ export default function App() {
         translucent
       />
 
-      {fontsLoaded ? <Groups /> : <ActivityIndicator />}
+      {!fontsLoaded ? <Groups /> : <Loading />}
 
     </ThemeProvider>
 
