@@ -1,4 +1,5 @@
  import {Container,Title,Subtitle} from './styles'
+ 
 
  type props = {
   title:string,
