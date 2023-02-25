@@ -1,23 +1,37 @@
-import {Container} from './styles'
+import { useState } from 'react';
+import { FlatList } from 'react-native';
+
+import { Container } from './styles'
 import { Header } from '@components/Header'
-import {Highlight} from '@components/Highlight'
-import {GroupCard} from '@components/GroupCard'
+import { Highlight } from '@components/Highlight'
+import { GroupCard } from '@components/GroupCard'
 
 
-export function Groups(){
+export function Groups() {
 
-  return(
-   <Container>
+  const [groups, setGroups] = useState<string[]>(['Galera da Rocket', 'Galera do uso o cerebro']);
 
-     <Header/>
+  return (
+    <Container>
 
-     <Highlight 
-      title='Turmas' 
-      subtitle='jogue com a sua turma'/>
+      <Header />
 
-      <GroupCard title='Nome da Turma'/>
-      <GroupCard title='Nome da Turma'/>
-      
-   </Container>
+      <Highlight
+        title='Turmas'
+        subtitle='jogue com a sua turma'
+      />
+
+
+      <FlatList
+        data={groups}
+        keyExtractor={item => item}
+        renderItem={({ item }) => (
+          <GroupCard
+            title={item}
+          />
+        )}
+      />
+
+    </Container>
   )
 }
