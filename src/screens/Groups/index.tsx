@@ -23,7 +23,6 @@ export function Groups() {
         subtitle='jogue com a sua turma'
       />
 
-
       <FlatList
         data={groups}
         keyExtractor={item => item}

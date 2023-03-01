@@ -1,16 +1,16 @@
- import {Container,Title,Subtitle} from './styles'
- 
+import { Container, Title, Subtitle } from './styles'
 
- type props = {
-  title:string,
-  subtitle:string
- }
- 
- export function Highlight({title,subtitle}:props){
 
-  return(
+type props = {
+  title: string,
+  subtitle: string
+}
+
+export function Highlight({ title, subtitle }: props) {
+
+  return (
     <Container>
-      
+
       <Title>
         {title}
       </Title>
@@ -21,4 +21,4 @@
 
     </Container>
   )
- }
+}
