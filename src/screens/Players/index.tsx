@@ -11,9 +11,6 @@ import { Button } from '@components/Button';
 import { Filter } from '@components/Filter'
 import { Input } from '@components/Input';
 
-
-
-
 export function Players() {
 
   const [team, setTeam] = useState('Time A')
