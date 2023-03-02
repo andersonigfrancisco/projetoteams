@@ -2,18 +2,21 @@ import { useState } from 'react';
 import { FlatList } from 'react-native'
 import { Container, Form, HeaderList, NumberOfPlayers } from './styles'
 
-import { Header } from '@components/Header';
-import { Highlight } from '@components/Highlight';
-import { Button } from '@components/Button';
+import { PlayerCard } from '@components/PlayerCard';
 import { ButtonIcon } from '@components/ButtonIcon';
-import { Input } from '@components/Input';
+import { Highlight } from '@components/Highlight';
+import { Header } from '@components/Header';
+import { Button } from '@components/Button';
 import { Filter } from '@components/Filter'
+import { Input } from '@components/Input';
+
+
 
 export function Players() {
 
   const [team, setTeam] = useState('Time A')
 
-  const [players, setPlayers] = useState([])
+  const [players, setPlayers] = useState(['Anderson','Telmo'])
 
   return (
     <Container>
@@ -54,6 +57,18 @@ export function Players() {
           {players.length}
         </NumberOfPlayers>
       </HeaderList>
+
+
+      <FlatList 
+        data={players}
+        keyExtractor={item => item}
+        renderItem={({ item }) => (
+          <PlayerCard 
+            name={item} 
+            onRemove={() => {}}
+          />
+        )}
+      />
 
       <Button
         type='SECONDARY'
