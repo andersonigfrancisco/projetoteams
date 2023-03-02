@@ -2,8 +2,6 @@ import {TouchableOpacity} from 'react-native'
 import styled from "styled-components/native";
 import { MaterialIcons } from '@expo/vector-icons'
 
-
-
 export type ButtonIconTypeStyleProps = 'PRIMARY' | 'SECONDARY';
 
 type Props = {
@@ -22,5 +20,4 @@ export const Icon = styled(MaterialIcons).attrs<Props>(({theme, type})=>({
   size:12,
   color:type === 'PRIMARY' ? theme.COLORS.GREEN_700 : theme.COLORS.RED
 }))`
-
 `;
