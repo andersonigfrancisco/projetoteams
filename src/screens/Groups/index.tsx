@@ -22,6 +22,10 @@ export function Groups() {
     navigation.navigate('new')
   }
 
+  function handlSelectGroup(group:string){
+    navigation.navigate('players',{group})
+  }
+
   async function fetchGroups() {
     try {
       const data = await groupsGetAll();
@@ -51,7 +55,7 @@ export function Groups() {
         renderItem={({ item }) => (
           <GroupCard
             title={item}
-            
+            onPress={()=>handlSelectGroup(item)}
           />
         )}
         
@@ -59,6 +63,7 @@ export function Groups() {
         ListEmptyComponent={() => (
           <ListEmpty message="Que tal cadastrar a primeira turma?" />
         )}
+        showsVerticalScrollIndicator
       />
 
       <Button 
