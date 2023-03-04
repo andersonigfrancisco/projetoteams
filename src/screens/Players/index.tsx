@@ -7,6 +7,7 @@ import { AppError } from '@utils/AppError';
 import { playerAddByGroup } from '@storage/player/playerAddByGroup';
 import { PlayerStorageDTO } from '@storage/player/PlayerStorageDTO';
 import { playersGetByGroupAndTeam } from '@storage/player/playersGetByGroupAndTeam';
+import { playerRemoveByGroup } from '@storage/player/playerRemoveByGroup';
 
 import { PlayerCard } from '@components/PlayerCard';
 import { ButtonIcon } from '@components/ButtonIcon';
@@ -16,6 +17,7 @@ import { Header } from '@components/Header';
 import { Button } from '@components/Button';
 import { Filter } from '@components/Filter'
 import { Input } from '@components/Input';
+
 
 
 
@@ -30,9 +32,7 @@ export function Players() {
   const [team, setTeam] = useState<string>('Time A');
   const [players, setPlayers] = useState<PlayerStorageDTO[]>([]);
 
-
   const route = useRoute();
-
   const { group } = route.params as RouteParms
 
   const newPlayerNameInput = useRef<TextInput>(null)
@@ -63,6 +63,18 @@ export function Players() {
       }
     }
     
+  }
+
+  async function handlePlayerRemove(playerName: string) {
+    try {
+      await playerRemoveByGroup(playerName, group);
+
+      fetchPlayersByTeam()
+
+    } catch (error) {
+
+      Alert.alert('Remover pessoa', 'Não foi possível remover essa pessoa.');
+    }
   }
   
   useEffect(() => {
@@ -133,7 +145,7 @@ export function Players() {
         renderItem={({ item }) => (
           <PlayerCard
             name={item.name}
-            onRemove={() => { }}
+            onRemove={() => handlePlayerRemove(item.name)}
           />
         )}
 
@@ -148,7 +160,6 @@ export function Players() {
       <Button
         type='SECONDARY'
         title='Remover turma'
-        onPress={handleAddPlayer}
       />
 
     </Container>
