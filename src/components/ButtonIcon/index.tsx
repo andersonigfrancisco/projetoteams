@@ -1,21 +1,20 @@
-import {TouchableOpacityProps} from 'react-native'
+import { TouchableOpacityProps } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'
 
-import { Container,Icon,ButtonIconTypeStyleProps } from "./styles";
+import { Container, Icon, ButtonIconTypeStyleProps } from './styles';
 
-
-type prop = TouchableOpacityProps & {
-  icon: keyof typeof MaterialIcons.glyphMap
-  type?:ButtonIconTypeStyleProps
+type Props = TouchableOpacityProps & {
+  icon: keyof typeof MaterialIcons.glyphMap;
+  type?: ButtonIconTypeStyleProps
 }
 
-export function ButtonIcon({icon,type='PRIMARY',...rest}:prop){
+export function ButtonIcon({ icon, type = 'PRIMARY', ...rest }: Props) {
   return(
-    <Container>
-     <Icon 
-      name={icon}
-      type={type}
-     />
+    <Container {...rest}>
+      <Icon 
+        name={icon}
+        type={type} 
+      />
     </Container>
-  )
+  );
 }
